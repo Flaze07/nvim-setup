@@ -1,9 +1,11 @@
 return {
   {
     "kaiuri/nvim-juliana",
-    lazy = false,
-    opts = { --[=[ configuration --]=]
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "juliana",
     },
-    config = true,
   },
 }

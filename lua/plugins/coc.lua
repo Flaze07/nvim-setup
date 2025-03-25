@@ -167,7 +167,8 @@ M.config = function()
   ---@diagnostic disable-next-line: redefined-local
   local opts = { silent = true, nowait = true }
   -- Show all diagnostics
-  keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+  keyset("n", "<space>A", ":<C-u>CocList diagnostics<cr>", opts)
+  keyset("n", "<space>a", ":<C-u>CocDiagnostics<cr>", opts)
   -- Manage extensions
   keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
   -- Show commands
