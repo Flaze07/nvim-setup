@@ -29,6 +29,17 @@ local plugins = {
     enabled = false,
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+    branch = "master",
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    lazy = false,
+    branch = "master",
+  },
+  {
     "mini.pairs",
     enabled = false,
   },
