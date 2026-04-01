@@ -5,6 +5,7 @@
 function Trim()
   local save = vim.fn.winsaveview()
   vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
+  vim.cmd("keeppatterns %s/\\r//g")
   vim.fn.winrestview(save)
 end
 
@@ -18,6 +19,17 @@ function Paste_and_trim()
 end
 
 vim.keymap.set("n", "p", Paste_and_trim, { noremap = true, silent = true })
+vim.keymap.set("n", "P", Paste_and_trim, { noremap = true, silent = true })
+vim.keymap.set("v", "<C-c>", '"+y')
+-- vim.keymap.set({ "n", "i" }, "<C-v>", '<cmd>normal! "+P<CR>')
+-- vim.keymap.set("v", "<C-v>", '<cmd>normal! "+P<CR>')
+-- vim.keymap.set("v", "<C-v>", '<cmd>normal! "+P<CR>')
+vim.keymap.set({ "n", "i", "v" }, "<C-v>", function()
+  vim.cmd('normal! "+P')
+  vim.schedule(function()
+    Trim()
+  end)
+end, { noremap = true, silent = true })
 
 if vim.g.neovide == true then
   vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.2
